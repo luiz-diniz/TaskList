@@ -1,5 +1,12 @@
-﻿namespace TaskList.Core;
+﻿using TaskList.Core.Interfaces;
+using TaskList.Entities;
 
-internal class TaskManager
+namespace TaskList.Core;
+
+public class TaskManager : ITaskManager
 {
+    public void Create(TaskItem task)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -1,0 +1,28 @@
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'TaskList')
+BEGIN
+	CREATE DATABASE TaskList;
+END;
+
+GO
+USE TaskList;
+GO
+
+CREATE TABLE [User](
+	[Id] INT IDENTITY(1,1) PRIMARY KEY,
+	[Name] VARCHAR(100) NOT NULL UNIQUE,
+	[Email] VARCHAR(100) NOT NULL UNIQUE,
+	[Username] VARCHAR(100) NOT NULL,
+	[Password] VARCHAR(255) NOT NULL
+)
+
+CREATE TABLE [Task](
+	[Id] INT IDENTITY(1,1) PRIMARY KEY,
+	[IdUser] INT,
+	[Name] VARCHAR(100) NOT NULL,
+	[Description] VARCHAR(200) NOT NULL,
+	[Done] BIT NOT NULL,
+	[CreationDate] DATETIME NOT NULL,
+	[FinishDate] DATETIME,
+
+	FOREIGN KEY ([IdUser]) REFERENCES [User]([Id])
+)

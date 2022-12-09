@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MongoDB\" />
-    <Folder Include="SQLServer\" />
+    <ProjectReference Include="..\TaskList.Entities\TaskList.Entities.csproj" />
   </ItemGroup>
 
 </Project>

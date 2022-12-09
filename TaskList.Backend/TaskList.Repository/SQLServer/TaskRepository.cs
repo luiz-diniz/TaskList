@@ -14,5 +14,6 @@ public class TaskRepository : ITaskRepository
     public void Create(TaskItem task)
     {
         _dbContext.Tasks.Add(task);
+        _dbContext.SaveChanges();
     }
 }

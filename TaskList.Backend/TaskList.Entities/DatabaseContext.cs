@@ -13,4 +13,9 @@ public class DatabaseContext : DbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<TaskItem> Tasks { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer(_configuration["ConnectionString"]);
+    }
 }

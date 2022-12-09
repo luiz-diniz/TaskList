@@ -11,3 +11,12 @@
     flex-direction: row;
     justify-content: right;
 }
+
+.btn{
+    cursor: pointer;
+    padding: .5rem;
+    border-radius: 5px;
+    border: 0 solid #333;
+    height: 2.5rem;
+    width: 4.5rem;
+}

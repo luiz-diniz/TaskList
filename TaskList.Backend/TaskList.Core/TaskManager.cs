@@ -1,4 +1,6 @@
-﻿using TaskList.Core.Interfaces;
+﻿using Microsoft.IdentityModel.Tokens;
+using TaskList.Core.Interfaces;
+using TaskList.Core.Models;
 using TaskList.Entities;
 using TaskList.Repository.Interfaces;
 
@@ -13,18 +15,31 @@ public class TaskManager : ITaskManager
         _taskRepository = taskRepository;
     }
 
-    public void Create(TaskItem task)
+    public void Create(TaskItemCreateModel task)
     {
         try
         {
-            task.CreationDate = DateTime.Now;
-            task.FinishDate = new DateTime();
+            if (task.IdUser <= 0)
+                throw new ArgumentOutOfRangeException($"Invalid User Id [{task.IdUser}].");
 
-            _taskRepository.Create(task);
+            if (string.IsNullOrEmpty(task.Name))
+                throw new ArgumentNullException(nameof(task.Name), "Invalid task name.");
+
+            var taskEntity = new TaskItem
+            {
+                IdUser = task.IdUser,
+                Name = task.Name,
+                Description = task.Description,
+                Done = false,
+                CreationDate = DateTime.Now,
+                FinishDate = null
+            };
+
+            _taskRepository.Create(taskEntity);
         }
         catch (Exception)
         {
-
+            //add log
             throw;
         }
     }

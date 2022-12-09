@@ -11,5 +11,5 @@ public class TaskItem
     public string Description { get; set; }
     public bool Done { get; set; }
     public DateTime CreationDate { get; set; }
-    public DateTime FinishDate { get; set; }
+    public DateTime? FinishDate { get; set; }
 }

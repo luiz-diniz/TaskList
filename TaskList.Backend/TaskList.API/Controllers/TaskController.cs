@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskList.Core.Interfaces;
+using TaskList.Core.Models;
 using TaskList.Entities;
 
 namespace TaskList.API.Controllers;
@@ -17,7 +18,7 @@ public class TaskController : ControllerBase
 
     [HttpPost]
     [Route("create")]
-    public IActionResult Create(TaskItem task)
+    public IActionResult Create(TaskItemCreateModel task)
     {
         try
         {

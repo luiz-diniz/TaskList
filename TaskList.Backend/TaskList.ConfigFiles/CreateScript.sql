@@ -19,10 +19,10 @@ CREATE TABLE [Task](
 	[Id] INT IDENTITY(1,1) PRIMARY KEY,
 	[IdUser] INT,
 	[Name] VARCHAR(100) NOT NULL,
-	[Description] VARCHAR(200) NOT NULL,
+	[Description] VARCHAR(200) NULL,
 	[Done] BIT NOT NULL,
 	[CreationDate] DATETIME NOT NULL,
-	[FinishDate] DATETIME,
+	[FinishDate] DATETIME NULL,
 
 	FOREIGN KEY ([IdUser]) REFERENCES [User]([Id])
 )

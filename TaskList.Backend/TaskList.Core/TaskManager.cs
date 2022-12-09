@@ -17,6 +17,9 @@ public class TaskManager : ITaskManager
     {
         try
         {
+            task.CreationDate = DateTime.Now;
+            task.FinishDate = new DateTime();
+
             _taskRepository.Create(task);
         }
         catch (Exception)

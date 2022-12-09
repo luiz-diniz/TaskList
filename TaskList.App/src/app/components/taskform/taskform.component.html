@@ -1,18 +1,21 @@
 <form [formGroup]="taskForm">
-    <h3>Create new Task</h3>
+    <h3>New task</h3>
+    <br>
     <hr>
-    <div class="form-group">
-        <label for="name" class="mb-2">Name</label>
-        <input type="text" id="name" class="form-control" placeholder="Task name..." formControlName="name">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="description" class="mb-2">Description</label>
-        <input type="text" id="description" class="form-control" placeholder="Task description..." formControlName="description">
-    </div>
-    <br>
-    <div class="d-flex flex-row justify-content-end ">
-        <button class="btn btn-success" style="margin-right: 0.5rem;">Create</button>
-        <button class="btn btn-dark">Clear</button>
-    </div>
+    <div class="form-content">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Task name..." formControlName="name">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" placeholder="Task description..." formControlName="description">
+        </div>
+        <br>
+        <div class="justify-right">
+            <button class="btn btn-create" style="margin-right: 0.5rem;">Create</button>
+            <button class="btn btn-clear">Clear</button>
+        </div>
+    </div>   
 </form>

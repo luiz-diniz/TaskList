@@ -12,10 +12,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Core
 builder.Services.AddSingleton<ITaskManager, TaskManager>();
 builder.Services.AddSingleton<IUserManager, UserManager>();
+builder.Services.AddSingleton<IUserPasswordManager, UserPasswordManager>();
 
+//Repository
 builder.Services.AddTransient<ITaskRepository, TaskRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

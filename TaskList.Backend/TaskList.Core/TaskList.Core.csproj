@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TaskList.Entities\TaskList.Entities.csproj" />
+    <ProjectReference Include="..\TaskList.Repository\TaskList.Repository.csproj" />
   </ItemGroup>
 
 </Project>

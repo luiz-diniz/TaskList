@@ -1,8 +1,9 @@
-﻿using static BCrypt.Net.BCrypt;
+﻿using TaskList.Core.Interfaces;
+using static BCrypt.Net.BCrypt;
 
 namespace TaskList.Core;
 
-internal class UserPasswordManager
+public class UserPasswordManager : IUserPasswordManager
 {
     public string GeneratePasswordHash(string text)
     {

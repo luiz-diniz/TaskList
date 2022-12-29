@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TaskCreateModel } from 'src/app/models/TaskCreateModel';
+import { TaskService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-taskform',
@@ -10,7 +12,7 @@ export class TaskformComponent implements OnInit {
 
   taskForm: FormGroup;
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.taskForm = new FormGroup({
@@ -20,7 +22,13 @@ export class TaskformComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.taskForm)
+    let task: TaskCreateModel = {
+      IdUser: 1,
+      Name: this.taskForm.value['name'],
+      Description: this.taskForm.value['description']
+    };
+    
+    this.taskService.createTask(task);
   }
 
   onClear(){

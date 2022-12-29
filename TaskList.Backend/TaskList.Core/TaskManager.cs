@@ -1,4 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.Extensions.Logging;
 using TaskList.Core.Interfaces;
 using TaskList.Core.Models;
 using TaskList.Entities;
@@ -8,10 +8,12 @@ namespace TaskList.Core;
 
 public class TaskManager : ITaskManager
 {
+    private readonly ILogger<TaskManager> _logger;
     private readonly ITaskRepository _taskRepository;
 
-    public TaskManager(ITaskRepository taskRepository)
+    public TaskManager(ILogger<TaskManager> logger, ITaskRepository taskRepository)
     {
+        _logger = logger;
         _taskRepository = taskRepository;
     }
 
@@ -24,7 +26,7 @@ public class TaskManager : ITaskManager
 
             if (string.IsNullOrEmpty(task.Name))
                 throw new ArgumentNullException(nameof(task.Name), "Invalid task name.");
-
+            
             var taskEntity = new TaskItem
             {
                 IdUser = task.IdUser,
@@ -36,10 +38,12 @@ public class TaskManager : ITaskManager
             };
 
             _taskRepository.Create(taskEntity);
+
+            _logger.LogInformation($"Task [{task.Name}] for user with Id [{task.IdUser}] created.");
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            //add log
+            _logger.LogError(ex, "Error while creating the task.");
             throw;
         }
     }

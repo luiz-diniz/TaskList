@@ -26,9 +26,9 @@ public class TaskController : ControllerBase
 
             return Ok();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            return Problem("Error while creating the task.");
+            return Problem($"Error while creating the task: {ex.Message}");
         }
     }
 }

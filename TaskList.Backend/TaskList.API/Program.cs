@@ -6,6 +6,9 @@ using TaskList.Repository.SQLServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.AddLog4Net();
+builder.Logging.AddLog4Net();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

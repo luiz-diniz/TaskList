@@ -1,5 +1,5 @@
 # TaskList
-A Task List built in .NET and Angular currently in development.
+A Task List built in .NET and Angular. Currently in development.
 
 ## Roadmap
 - User Creation and Authentication

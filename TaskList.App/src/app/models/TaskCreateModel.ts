@@ -1,9 +1,5 @@
-export class Task{
-    public Id: number;
+export class TaskCreateModel{
     public IdUser: number;
     public Name: string;
     public Description: string;
-    public Done: boolean;
-    public CreationDate: any;
-    public FinishDate: any;
 }

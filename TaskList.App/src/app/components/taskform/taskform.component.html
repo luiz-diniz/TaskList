@@ -1,4 +1,4 @@
-<form [formGroup]="taskForm">
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <h3>New task</h3>
     <br>
     <hr>
@@ -14,8 +14,8 @@
         </div>
         <br>
         <div class="justify-right">
-            <button class="btn btn-create" style="margin-right: 0.5rem;">Create</button>
-            <button class="btn btn-clear">Clear</button>
+            <input type="submit" class="btn btn-create" value="Submit" style="margin-right: 0.5rem;" [disabled]="taskForm.invalid">
+            <button class="btn btn-clear" (click)="onClear()">Clear</button>
         </div>
     </div>   
 </form>
